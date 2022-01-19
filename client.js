@@ -1,9 +1,9 @@
 const net = require("net");
 
 // establishes a connection with the game server
-const connect = function () {
+const connect = function() {
   const conn = net.createConnection({
-    host: "10.0.0.223",
+    host: "165.227.47.243",
     port: 50541,
   });
 
@@ -12,6 +12,11 @@ const connect = function () {
 
   conn.on("data", (data) => {
     console.log(data.toString());
+  });
+
+  conn.on("connect", () => {
+    console.log("Successfuly connected to game server");
+    conn.write("Name: SSM");
   });
 
   return conn;
